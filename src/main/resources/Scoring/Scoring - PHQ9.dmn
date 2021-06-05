@@ -1,0 +1,1595 @@
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="http://www.trisotech.com/definitions/_42252f53-2f77-40be-928b-3d45ae182051" xmlns:triso="http://www.trisotech.com/2015/triso/modeling" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:trisodmn="http://www.trisotech.com/2016/triso/dmn" xmlns:ns1="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:tc="http://www.omg.org/spec/DMN/20160719/testcase" xmlns:drools="http://www.drools.org/kie/dmn/1.2" xmlns:openapi="https://openapis.org/omg/extension/1.0" xmlns:ns2="https://www.trisotech.com/spec/DMN/20191111/EXT/" xmlns:i18n="http://www.omg.org/spec/BPMN/non-normative/extensions/i18n/1.0" xmlns:rss="http://purl.org/rss/2.0/" xmlns:trisofeed="http://trisotech.com/feed" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" id="_42252f53-2f77-40be-928b-3d45ae182051" name="Scoring - PHQ9" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="http://www.trisotech.com/definitions/_42252f53-2f77-40be-928b-3d45ae182051">
+  <dmn:extensionElements/>
+  <dmn:itemDefinition id="_5E4DE071-9EF1-4A0A-9B89-C9BEEFFF6A7D" name="PHQ-9_questions" isCollection="false">
+    <dmn:itemComponent id="_3b1333c3-12a0-437d-ba38-7a9bb19cb1c6" name="Over the last 2 weeks how often have you been bothered by little interest or pleasure when doing things?" isCollection="false">
+      <dmn:typeRef>Answers_to_PHQ_9</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_ec2ce02a-0bab-4ec8-b42e-5d91e38b0f2e" name="Over the last 2 weeks how often have you been bothered by feeling down depressed or hopeless?" isCollection="false">
+      <dmn:typeRef>Answers_to_PHQ_9</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_3c2c7e3d-ed9d-457f-b8a7-4db26b6c422e" name="Over the last 2 weeks how often have you been bothered by trouble falling or staying asleep or sleeping too much?" isCollection="false">
+      <dmn:typeRef>Answers_to_PHQ_9</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_1e33cb7b-8576-417b-922d-866fe5157519" name="Over the last 2 weeks how often have you been bothered by feeling tired or having little energy?" isCollection="false">
+      <dmn:typeRef>Answers_to_PHQ_9</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_0338cde8-a0a5-46ba-8663-97578ca8a6f8" name="Over the last 2 weeks how often have you been bothered by poor appetite or overeating?" isCollection="false">
+      <dmn:typeRef>Answers_to_PHQ_9</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_45210fdb-9381-4e70-a576-cbc97135f35d" name="Over the last 2 weeks how often have you been bothered by feeling bad about yourself or that you are a failure or have let yourself or your family down?" isCollection="false">
+      <dmn:typeRef>Answers_to_PHQ_9</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_47200af9-c48c-4bfa-a9b9-7e9453d5e876" name="Over the last 2 weeks how often have you been bothered by trouble concentrating on things such as reading the newspaper or watching television?" isCollection="false">
+      <dmn:typeRef>Answers_to_PHQ_9</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_1b0c6a30-83b3-4fda-b632-1f5f261a6e1b" name="Over the last 2 weeks how often have you been bothered by moving or speaking so slowly that other people could have noticed or the opposite being so fidgety or restless that you have been moving around a lot more than usual?" isCollection="false">
+      <dmn:typeRef>Answers_to_PHQ_9</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_1e8a9703-9c24-4d07-b060-d80c172a02e2" name="Over the last 2 weeks how often have you been bothered by thoughts that you would be better off dead or of hurting yourself?" isCollection="false">
+      <dmn:typeRef>Answers_to_PHQ_9</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_B37E4948-5684-4C08-B4D7-14615020C42D" name="Answers_to_PHQ_9" isCollection="false">
+    <dmn:typeRef>string</dmn:typeRef>
+    <dmn:allowedValues id="_696258B9-E7A2-4B73-A686-28D1A0DF9049">
+      <dmn:text>"Not at all","Several Days","More than half the days","Nearly every day"</dmn:text>
+    </dmn:allowedValues>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_A7E76D51-C860-4AA0-A7B8-94318800984E" name="Depression_severity" isCollection="false">
+    <dmn:typeRef>string</dmn:typeRef>
+    <dmn:allowedValues id="_C300E535-2038-4C35-9B1E-9B13A70E8D21">
+      <dmn:text>"No depression","Minimal depression","Mild depression","Moderate depression","Moderately severe depression","Severe depression"</dmn:text>
+    </dmn:allowedValues>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_91E35474-0931-49DA-AFF7-B4103E93890A" name="tPHQ9Score" isCollection="false">
+    <dmn:typeRef>number</dmn:typeRef>
+    <dmn:allowedValues id="_2FDE2DCE-7710-46F7-98C6-237563385018">
+      <dmn:text>[0..27]</dmn:text>
+    </dmn:allowedValues>
+  </dmn:itemDefinition>
+  <dmn:decision id="_198ab7f2-4412-4927-95b6-b84975e40646" name="PHQ-9 Score Eval">
+    <dmn:description>&lt;p&gt;PHQ-9 scoring logic&amp;nbsp;based on patient answers provided within the PHQ-9 questionnaire.&lt;/p&gt;</dmn:description>
+    <dmn:extensionElements/>
+    <dmn:question>&lt;p&gt;What is the PHQ9 score of the patient?&lt;/p&gt;</dmn:question>
+    <dmn:allowedAnswers>A number greater or equal to 0 and smaller or equal to 27</dmn:allowedAnswers>
+    <dmn:variable id="_78ba5c39-74b8-4d54-8661-4c18c4cc0349" name="PHQ-9 Score Eval" typeRef="tPHQ9Score"/>
+    <dmn:informationRequirement id="_49f5775e-e238-461b-b46a-e09a5dd5158d">
+      <dmn:requiredInput href="#_41ed454c-3ff2-4b2e-80a6-c2ec21d7e231"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_65d46070-66e4-45b3-bbf3-b9eaccaa0ab3" typeRef="tPHQ9Score" hitPolicy="COLLECT" aggregation="SUM" preferredOrientation="Rule-as-Row" outputLabel="PHQ-9 Score Eval">
+      <dmn:input id="_95ae6bd8-b90c-4d6f-bf9d-1ae824a80aae">
+        <dmn:inputExpression id="_E63A2AC8-C12F-4F49-AD49-A06E1C79A103" typeRef="Answers_to_PHQ_9">
+          <dmn:text>PHQ-9 Questions.Over the last 2 weeks how often have you been bothered by little interest or pleasure when doing things?</dmn:text>
+        </dmn:inputExpression>
+        <dmn:inputValues id="_DD885294-BD22-4424-A3F4-85124C775E17">
+          <dmn:text>"Not at all","Several Days","More than half the days","Nearly every day"</dmn:text>
+        </dmn:inputValues>
+      </dmn:input>
+      <dmn:input id="_57d99012-a59f-450a-b81d-eec81f421505">
+        <dmn:inputExpression id="_056E7704-305E-4F43-8B39-D7824DAC3543" typeRef="Answers_to_PHQ_9">
+          <dmn:text>PHQ-9 Questions.Over the last 2 weeks how often have you been bothered by feeling tired or having little energy?</dmn:text>
+        </dmn:inputExpression>
+        <dmn:inputValues id="_40C8951E-EA17-430E-A0DD-4EC0515ABEE3">
+          <dmn:text>"Not at all","Several Days","More than half the days","Nearly every day"</dmn:text>
+        </dmn:inputValues>
+      </dmn:input>
+      <dmn:input id="_63aa8980-0ae5-4da3-ae53-e6eab0420993">
+        <dmn:inputExpression id="_E4A9FC29-5303-4E1A-8708-E25E0A239BEB" typeRef="Answers_to_PHQ_9">
+          <dmn:text>PHQ-9 Questions.Over the last 2 weeks how often have you been bothered by feeling bad about yourself or that you are a failure or have let yourself or your family down?</dmn:text>
+        </dmn:inputExpression>
+        <dmn:inputValues id="_58E292EC-B4FF-4C06-AF19-BCCBE6FCE643">
+          <dmn:text>"Not at all","Several Days","More than half the days","Nearly every day"</dmn:text>
+        </dmn:inputValues>
+      </dmn:input>
+      <dmn:input id="_e7f68d81-762a-4101-93ba-ae4e79a25a98">
+        <dmn:inputExpression id="_4CF19F60-1EA6-4CD0-BFD4-F0F47116E3DD" typeRef="Answers_to_PHQ_9">
+          <dmn:text>PHQ-9 Questions.Over the last 2 weeks how often have you been bothered by feeling down depressed or hopeless?</dmn:text>
+        </dmn:inputExpression>
+        <dmn:inputValues id="_946DB397-F4BE-4F39-A0A4-888D1A59C76F">
+          <dmn:text>"Not at all","Several Days","More than half the days","Nearly every day"</dmn:text>
+        </dmn:inputValues>
+      </dmn:input>
+      <dmn:input id="_6105e0fa-3bbd-459f-84bb-4876de6f0387">
+        <dmn:inputExpression id="_8AB99C1A-1000-4334-AD97-1A9B9079CEB3" typeRef="Answers_to_PHQ_9">
+          <dmn:text>PHQ-9 Questions.Over the last 2 weeks how often have you been bothered by moving or speaking so slowly that other people could have noticed or the opposite being so fidgety or restless that you have been moving around a lot more than usual?</dmn:text>
+        </dmn:inputExpression>
+        <dmn:inputValues id="_0852D8DA-E0EB-4063-B856-5C50B51A9653">
+          <dmn:text>"Not at all","Several Days","More than half the days","Nearly every day"</dmn:text>
+        </dmn:inputValues>
+      </dmn:input>
+      <dmn:input id="_1aeb05de-b16d-4260-a861-ff5b30a54578">
+        <dmn:inputExpression id="_BA379270-0DA6-4035-B4DF-8401EEEE1A96" typeRef="Answers_to_PHQ_9">
+          <dmn:text>PHQ-9 Questions.Over the last 2 weeks how often have you been bothered by poor appetite or overeating?</dmn:text>
+        </dmn:inputExpression>
+        <dmn:inputValues id="_83C9088E-908F-4E60-B17D-1890FA7FC3BA">
+          <dmn:text>"Not at all","Several Days","More than half the days","Nearly every day"</dmn:text>
+        </dmn:inputValues>
+      </dmn:input>
+      <dmn:input id="_803b0898-24bf-4827-bb12-609e96861ed9">
+        <dmn:inputExpression id="_1F788651-AC7E-475C-A799-BD21509714BA" typeRef="Answers_to_PHQ_9">
+          <dmn:text>PHQ-9 Questions.Over the last 2 weeks how often have you been bothered by thoughts that you would be better off dead or of hurting yourself?</dmn:text>
+        </dmn:inputExpression>
+        <dmn:inputValues id="_6C27A4B3-A44D-4077-8491-5663D0641B1F">
+          <dmn:text>"Not at all","Several Days","More than half the days","Nearly every day"</dmn:text>
+        </dmn:inputValues>
+      </dmn:input>
+      <dmn:input id="_04cf0dc6-a7cb-480a-b9cd-881a0825dd31">
+        <dmn:inputExpression id="_51A93923-D58B-4ACF-92D1-3614282780FC" typeRef="Answers_to_PHQ_9">
+          <dmn:text>PHQ-9 Questions.Over the last 2 weeks how often have you been bothered by trouble concentrating on things such as reading the newspaper or watching television?</dmn:text>
+        </dmn:inputExpression>
+        <dmn:inputValues id="_3FC4DB15-FD39-40EE-99F3-5310D7FBEBC0">
+          <dmn:text>"Not at all","Several Days","More than half the days","Nearly every day"</dmn:text>
+        </dmn:inputValues>
+      </dmn:input>
+      <dmn:input id="_ca2c8144-aed1-4316-8c91-79d6f818cc8f">
+        <dmn:inputExpression id="_57EED6E2-C5BD-433A-9EB3-CE71A1B59141" typeRef="Answers_to_PHQ_9">
+          <dmn:text>PHQ-9 Questions.Over the last 2 weeks how often have you been bothered by trouble falling or staying asleep or sleeping too much?</dmn:text>
+        </dmn:inputExpression>
+        <dmn:inputValues id="_223D82A2-3BAE-47DF-9117-E36335494734">
+          <dmn:text>"Not at all","Several Days","More than half the days","Nearly every day"</dmn:text>
+        </dmn:inputValues>
+      </dmn:input>
+      <dmn:output id="_3d8f771f-c2c9-4dae-9327-d083b5780aab">
+        <dmn:outputValues id="_073B4094-AFB8-4EFC-8136-489EC1016F3A">
+          <dmn:text>[0..27]</dmn:text>
+        </dmn:outputValues>
+      </dmn:output>
+      <dmn:annotation name="Description"/>
+      <dmn:rule id="_b6785c9a-a469-4b70-ad80-bdb9d7021c64">
+        <dmn:inputEntry id="_9880f498-1120-44e7-a9d6-aba14c84d97d">
+          <dmn:text>"Not at all"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_bba773fb-6d3a-497a-96b9-c299f3abf398">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_15f31e4b-4098-469a-9958-884b4e314f8b">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_e07a6510-8295-45d7-b866-ce5eb6bbe10e">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_685733a1-f31b-4ed5-bd5e-de6897fe830c">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_86e035b1-5edb-4565-a714-a65e474f2abc">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ef86c4c0-fff6-4908-bc4f-f9a116f4f426">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_f97bb3c6-7437-4370-8d01-48bd62b5d7ae">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3a93a321-bbd9-42ff-9266-112c95b9e45f">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_1ef79992-e4a4-447e-bd08-ed25e3a99356">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_2adc6ebe-267a-4953-9539-fb10bf3316db">
+        <dmn:inputEntry id="_7c657ec9-511f-43bd-aba6-2815ed7152e7">
+          <dmn:text>"Several Days"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ba5c59f8-d3fe-47ae-831c-ef04c8c11177">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_87a5334b-d5a4-469a-9f68-be723648713e">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_715bc8f6-84cf-40ca-a692-58aeee32247b">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_e6bdda1f-da27-4227-b57f-a1996ede0db9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6eb81d15-295e-4021-8008-5dad71436a02">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_62fb9bf0-23e7-4c37-b896-7b9fdb8bcbcf">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_86cf7f6b-30ab-4d9d-b388-f447e621a7bb">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ce68efca-8772-401d-9dce-acf2878e6699">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_b9fddb75-3cdc-408c-a0fd-726acff65715">
+          <dmn:text>1</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_68b9e9cb-46a7-4bd9-a53d-4593407dd11a">
+        <dmn:inputEntry id="_9491e770-aa2a-46ef-b53a-9a14acf8c02d">
+          <dmn:text>"More than half the days"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_b144fea3-220e-4249-88da-f08fd273ce1d">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_653d432e-ffde-4db3-b01e-d18bbaba0273">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_f321d4eb-a00d-438f-be5f-e4f2d9e630bf">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_21945ce5-b223-40ed-97be-689fe6f462ce">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2502164e-34cc-41cb-89ed-f0e51eaef5e5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7454541c-5ae0-4b3d-8d9b-d6f795c35913">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_e413485e-c6de-498a-b089-a23863e4c5f7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_20d01bbe-4bc7-41e7-8b02-36368de135f1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_6b3a5738-4a26-4b67-a351-d534179588d7">
+          <dmn:text>2</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_f38fdd74-59b6-42f5-b0b4-0907f2fb7a09">
+        <dmn:inputEntry id="_120d3bab-9ad2-406e-ad44-658f7ac614c2">
+          <dmn:text>"Nearly every day"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_48b79a61-2265-41e6-badb-80ce218079fb">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_f289b0ed-9eb7-4ed3-8761-bc75fad0b8c7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_66b2bfa4-679d-4834-ad76-1287bd395cd0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_60b749f3-d3b9-4a44-991c-a1a052f72ecf">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_375af010-35e0-4370-95da-47bda1285570">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_de1bc3da-83bb-495a-b19e-2d079659f943">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_33a20976-24fb-4ea1-8fd0-0129fa3fc851">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7f84d027-6042-4980-9bb1-c8f4e9820998">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_1d06552d-fbd7-4daf-a59f-b2d488ab681d">
+          <dmn:text>3</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_58cd377f-40e2-4ac9-aae0-5d247ef15441">
+        <dmn:inputEntry id="_cb49695c-538d-433b-a769-4d25fda10ac8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_edf922d5-d329-4ee0-ae54-c3c82f267e0a">
+          <dmn:text>"Not at all"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_d57aaec6-ad94-43f4-8608-620b8cb4770e">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4a7a41e3-35bf-4e4a-bbca-a2803b1c5491">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_c2d88a65-0699-4ba3-b737-7357f19431e4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_200634ed-a346-4d6c-b075-819653457da5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_020945fc-bdb1-4e22-bfeb-591b5e81056e">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_43334562-6b04-4673-bc7d-35a11dd54da8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_519b89b3-f228-41da-9abe-df53d3701865">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_d4f020c2-de48-4546-899c-4c1e239d34d7">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_df54c9f5-43eb-4784-905f-4fd28564a553">
+        <dmn:inputEntry id="_1a7adfed-820b-4b66-a331-3dd1c82bbfa9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9c9bbaab-05d8-4d66-b378-a44a378ad576">
+          <dmn:text>"Several Days"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_a79770a8-09bc-4949-bb5e-24c607593f4a">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4f4937fd-1fcc-4440-8aa7-7ace22640c7e">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7c1259c2-a685-4c58-837a-ae53636ec247">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_a8c2c4ac-3456-488b-bc2e-6bb82ce899cb">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_f5d0d00f-b0c5-43b0-8261-68f6b9c072ef">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8996577f-8bae-4320-a55e-36a2284933aa">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_f4035934-8000-40a1-a82e-7279a739dcdf">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_96595741-e625-4b57-a302-357dc7185bfd">
+          <dmn:text>1</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_b93b6cf9-eb45-4a85-9bd6-27f3fdc4506e">
+        <dmn:inputEntry id="_6ccd8abd-0fd8-49b1-8ee9-a0ef77f46e62">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_29f14f07-e1ea-42f5-a26c-57029a8251f6">
+          <dmn:text>"More than half the days"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_58a58bd4-94d3-494b-a719-9ee07513b41f">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_185fa9b1-e364-4439-85c1-72979d8d8368">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_b40cf201-2664-4923-8f59-3687c39dffb3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_eea7adf7-d07c-44c7-bd53-e080750b3e2f">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_aac9417e-9b2a-4d29-8e87-fbde8999a2fb">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_d3841afe-e9a1-497c-9ca0-41edc792f75c">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_646f5f5e-e92f-4aad-929d-dca864487415">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_faea80dc-23ef-47b1-ae98-32b792636b7e">
+          <dmn:text>2</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_a298be92-b7cf-4902-8e8a-bd2f612c0cd4">
+        <dmn:inputEntry id="_80b1f306-480d-4cdc-958b-eee46dd499c6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1e6f33fa-31b3-46b9-aeb4-ef05cc3ad4d5">
+          <dmn:text>"Nearly every day"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_13c1380b-21f1-4f71-8dad-c0998dfc466c">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_acb000ef-3feb-4ca1-a97b-03137fb62d95">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_d287a830-f281-4fc2-b8c8-f4bf9e980985">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_e2703507-a0f7-4050-b61d-f450828704d1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_fbdae557-a568-462a-8bd1-9e2cda45340b">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_e14f31d1-8388-4c87-817a-f948fd62e1f9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7aec93d3-c942-4cbf-aa32-26a42403ae6c">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_e9689c30-ac09-4e86-bef9-fdd5b2e65640">
+          <dmn:text>3</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_790c51cd-f7d7-4868-9b9e-b9118b03c337">
+        <dmn:inputEntry id="_ed2218b2-4d3f-4088-b684-72e6b8b61ff0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0fdf7b76-e089-485b-a862-7c21261acb59">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_fab85b8c-814c-4513-82d4-052861c14408">
+          <dmn:text>"Not at all"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_e13a90e9-8556-47f4-b517-53c5a414ede0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_a6dab1e3-743f-4062-b819-664317cd47fa">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1532c32a-111f-40be-b0bf-ebdffc9e5602">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6b9fa76a-cc09-494c-9b17-4f377ffe4f0b">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7874a28c-827b-4b3a-9a24-a595dfa0f77e">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_bfa7d6fa-ca9f-470c-89b5-dd05400a79a1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_d1da0832-f80f-4cb7-9c7d-a25d05958c26">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_518a67e1-5545-4f27-834e-b4f0365c5b7d">
+        <dmn:inputEntry id="_49ead3c3-de04-4ee8-9ab6-9ad7f2ac47d4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_14477592-a573-4e28-8c6e-c8ceae453691">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_c31d49ea-99a3-406f-a1b2-24ed97ac207b">
+          <dmn:text>"Several Days"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_473c7425-7807-40d7-92fd-ed2bdcfa03c7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2dcca66e-dabf-4c30-a1a6-a38a2a01a4cb">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ab8ab27f-deb7-4915-b088-c129638db8c3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9cb907e7-997d-4073-84ca-dac1c252cde2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0c4ba5f8-81f7-4633-8755-df996b430200">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_d9f0ceed-12d2-4181-85bf-8e7b17e3559e">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_a6011c34-fefd-4e20-abb0-cbfe15d61105">
+          <dmn:text>1</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_2e9fa209-7d95-4dcf-8a3a-237f3f597610">
+        <dmn:inputEntry id="_bfa09d6c-2aa5-4aa1-bf5e-9df675bcc34f">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_da060391-f15e-4259-922f-38e205b736e9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_286ec41a-d3df-4ea4-83ee-1a0cc578b41b">
+          <dmn:text>"More than half the days"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_b9ef5e36-ea96-469e-a3ce-7a831d9ef308">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1cb7c4c1-bc47-4dff-9cdb-f80cb4c6c146">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_600a0969-ac63-4e84-bfca-d6e2e7cb02bd">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_c39a808f-12f4-416a-918f-d088dbe3ebe4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_d8adffb1-e62f-4964-a35b-44f028b29125">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_cf1dbdf7-7430-4bde-9db4-e5377bafe57e">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_46057931-d482-443f-8527-42a75774c731">
+          <dmn:text>2</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_80a89196-e258-430c-b15d-596556c7085e">
+        <dmn:inputEntry id="_ac514429-5bb1-4cd6-8bfb-169ae035a151">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ff0b1f3b-181a-49a3-be5f-a06eeb81c547">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5f4492c9-ef97-41cb-8f21-efea090883e1">
+          <dmn:text>"Nearly every day"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_defd4d16-7a0a-459c-b7ae-543be1f1684b">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9c4f0638-b2cd-4a82-b6cb-2d0c33890aa4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ddedca28-714c-4447-98e1-deec84b91579">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_e780ab42-72a4-42ea-b2e4-867ba628ff73">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_54e4b6b1-9224-4cff-98c9-648390a8d5fd">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_70854d5e-61ce-4a5b-a37b-efdffcdd799f">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_d9ac6652-6c43-497c-bda4-bf57dd59c2b2">
+          <dmn:text>3</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_dca1c7f1-35f5-45a7-92ea-0cbfa81f08fa">
+        <dmn:inputEntry id="_4ac9655a-9948-49fa-8735-ef83cee93477">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_d0e0765e-c0c1-498f-b961-7a1dcb18cf0a">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_70149736-f13c-44e4-bdc5-d66f286edf79">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_124a66a0-ba6c-4c40-995f-9007ae8a1356">
+          <dmn:text>"Not at all"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_35dccb09-a687-4564-a9e3-a696fabad993">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_316ca63d-47b2-41bd-820f-d0aa9ceb3e28">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_e9109b75-854f-4a40-82da-6301f110a429">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_dbcdcdc0-cbf9-46bd-9d5c-2c4d290a9d76">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_a9b5ccf5-a6a6-4e73-9a91-2faecb6d79a1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_69057ec1-b07b-4ce6-8235-82116df67414">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_2aff119a-6254-430b-a952-4216fe47c529">
+        <dmn:inputEntry id="_2d607355-78aa-4171-8605-468ede74b10a">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_f88a2d78-78c7-4058-b7a7-e91a1439006b">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_c317d81d-ac5d-4af2-b4f7-9a2b188ef469">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_002422d1-1967-47e2-85fc-d3f540e32e04">
+          <dmn:text>"Several Days"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_dea091ed-734c-4645-925f-0bffb2997778">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_43578594-d184-4ef4-9234-53e32c542cc5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_718c5cbb-a404-4fba-94a9-4bc4834628b1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8cf39bcc-d06f-4b48-a558-da1848b7d989">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_fe46bfe8-3ec4-42ef-8859-60d2e2178149">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_c46962b8-34a7-4ba4-b008-d45dd2a1c61f">
+          <dmn:text>1</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_1848fcd3-824a-4de7-9777-6850e8e2b191">
+        <dmn:inputEntry id="_749cffb2-5667-40ee-a746-d149c97fc323">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_bb6af145-582a-406e-b943-6ea203d92121">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_b9839e4c-5c8f-4112-a30f-5c45a5cebfa0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6b7ca9df-b53b-4725-a54a-70fc1a11cf9a">
+          <dmn:text>"More than half the days"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0d2bcbe1-1e5f-4dd7-9263-dafb33b3caa6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_04d28585-8edb-493b-8f7d-36aae853faba">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_e4a4ed74-fd5a-432e-9764-688c50100653">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ed334e37-9483-4dc5-b819-dcc67ac166b5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0910aef8-41f5-4992-9af2-9b8e75b94021">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_16e03bc5-1f10-47bb-8b8a-e95befd2f7b4">
+          <dmn:text>2</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_c9cc8596-877c-472d-ace9-b26616693d56">
+        <dmn:inputEntry id="_fb83e170-ff49-4e07-9286-06ecd4ef541f">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_e33f7fea-8205-4641-ba34-6f5cacc5121a">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8a8002fe-84e1-4c0c-b824-75b54e581554">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1ea9cccc-b0a3-4c59-877f-cbb74066705f">
+          <dmn:text>"Nearly every day"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_05f7832a-4033-4b32-852c-8cb275a6ec40">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_124fa127-3546-41d6-befe-21fe114e0bb5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_e667e5de-54bf-46ae-a4c8-b49951e7889e">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_15ba6839-c0bc-4bc6-b59d-4d8d5945b5db">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6f5814ec-a0b0-4661-9780-d7f1644026c8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_279be4e6-25b7-409d-8fa6-1437221509df">
+          <dmn:text>3</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_fa46b0df-6274-47bc-8154-4ad8c58c0b2f">
+        <dmn:inputEntry id="_1bcacf96-6b6a-4f78-844b-3d05c961b531">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_a57549ea-a4ef-4505-a112-3c056dc3518c">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_49473154-a91a-462e-b79f-ccc0274aa245">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_193f5417-7897-4f84-9d19-27b86f7fd317">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_f4733b60-85ec-4d4c-b5b3-d2cd92e02f1d">
+          <dmn:text>"Not at all"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_54795ca3-6af9-4daf-846e-8d4392c8a356">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ab4e7087-1c36-497f-afdd-2e4e2b700c41">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_46fdadaf-55bf-42b9-8446-b3b6aff55449">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_434ecdbe-8de2-4507-9697-a0702c9fd932">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_2c713d90-baf8-4537-81fa-5f797c999eef">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_c21a06de-81eb-4666-bf9d-6af1d5f669e5">
+        <dmn:inputEntry id="_ae21be0a-27dc-41e9-9fe2-a96374f196d6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4c9c8baa-ccac-421d-a988-1ee63b0b4da8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_26135563-43b8-4544-bc33-6c4d6bbd12a9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_690284d7-8652-415f-98c3-b920e98927b2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5dc62e34-aff9-430f-8811-925650b6975a">
+          <dmn:text>"Several Days"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0c416292-3c7e-4698-8704-778ac4d049a1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_10878eec-43c2-49b3-bd7e-67fc1ab61dbd">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6824d8e0-3117-45d7-896a-e58eaf8d2091">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9e3a0d5a-f0a2-4345-a135-34a9a839cef0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_e0474ff9-5ac2-4104-a787-5a5d345ea2c7">
+          <dmn:text>1</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_12fc4540-9a82-4042-83e2-c1a0312b750e">
+        <dmn:inputEntry id="_a222e14c-1652-46f7-90cb-af8737c20aec">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_49633bee-5832-4899-8b53-6041a8b6864b">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_a37fab96-4fc6-4458-bae6-136296ba15cc">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_cd9486f3-5e08-419b-b402-fff0c0c06cc8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_e923463d-24b9-4642-b170-42253c36ba7f">
+          <dmn:text>"More than half the days"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_d370dc33-54eb-40da-8081-4944c0120ae5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_c6f8733c-279f-4ee0-9b8a-c9db604856b2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5f0a576b-5144-4799-9398-b9d27b1a4d80">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_a726a240-11cf-4bc3-b574-90ed7c3efa52">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_d0f8efe5-4391-49bd-b1ac-37300c4573f8">
+          <dmn:text>2</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_4e9308ff-d132-4757-810a-b6f6418e865f">
+        <dmn:inputEntry id="_3c7b92a0-e3d9-4f62-b85d-870b2df07d3a">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_590388b1-3eef-4ffd-a541-e4714c1fa8e1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_95ed57d9-7b70-47d0-b5a7-c852c17a6dce">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_cac50777-351f-4b5d-8d11-3861ed1462ee">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_780488a4-6332-4839-894d-aead78a595c9">
+          <dmn:text>"Nearly every day"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_00bdd49c-3c6d-4ee0-b15b-926111bf40cd">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_04d71c1c-b981-4522-9770-f3e97566e2b0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_d431b8c6-7f19-43dd-94a1-5f31c64c8e78">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_049db898-3c59-46f7-8153-64d8327bfe22">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_14da4deb-09c8-44a9-bad9-077801dd1395">
+          <dmn:text>3</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_770bdb7d-e699-4aea-a47f-88b0ddfd00eb">
+        <dmn:inputEntry id="_52842c85-dbe2-4b3b-af6a-fcc67c30dc3f">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_c6ee306b-81f4-439e-b4aa-290e7e4ea055">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6525ab5a-fc1a-490a-b002-4ec057ff2488">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_55ae60b2-9368-4bb4-a7b2-936e0def166c">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_bb5d03e2-babc-4b03-9d6a-fde93a9297a8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_c00a7cc2-18f0-448a-b877-e6e70c4bf7c9">
+          <dmn:text>"Not at all"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2f6e1756-b59c-4511-94f8-dbd8c6035140">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_f5c3c1e0-7522-4dc7-9f88-cc2ef899e2dc">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_e24703c9-88a2-4117-a0c0-21e56c454f46">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_5ca8c725-7de2-441e-8d95-9aef8ba4a775">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_a6039bba-cdcd-4ea6-8692-c18cbb7694d2">
+        <dmn:inputEntry id="_00e7d58b-9992-4a05-8171-1748df695245">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_fc7203bd-d01a-450e-b3a7-0e408b747537">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_dabd6e5b-cfd0-4858-8b81-f5494f708de9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6560be2a-79d4-4b0d-9d44-dbef8b671026">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_c57a0892-58fa-4306-8662-81bb6bf5354c">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4cc316fe-666d-4f15-827e-56fe24eb04ec">
+          <dmn:text>"Several Days"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_d76ea425-7a73-413c-aa46-2d5f88b52710">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_e6ca3313-b217-4fb7-ac92-bcc42c780135">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2599d45e-ee63-4a07-a36d-c4ab5a8d0ba8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_6df4bbde-f1b4-47ad-ab23-2bd81b64efc3">
+          <dmn:text>1</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_82274906-752a-43bf-981d-f1809c3f1aa6">
+        <dmn:inputEntry id="_8bbe7f50-2dda-4a62-9572-a3b70bba889d">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_d63f3f99-38ef-4ad2-b7d1-6bb4c1888525">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_282c021c-8a69-4535-9d6f-b4a61a5b29cf">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1711fda1-a6ca-4f2e-98d6-a1bc626cceee">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_b287ba43-19c0-4b95-b572-de8d41e32b34">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_e0a7c736-680d-44f1-84df-36654fb8f233">
+          <dmn:text>"More than half the days"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_b15510f6-5141-4f58-b7b6-b21a4f95ae8a">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0280c1de-d33d-4c9a-aa05-290c8ee3bdb0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5b41cd69-a8fc-43e2-8255-8320c74a71fb">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_339363a6-4f9c-4585-97ce-f3315e96fb20">
+          <dmn:text>2</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_fbe5cd49-f922-48dd-894a-932313bff52d">
+        <dmn:inputEntry id="_e326ce9f-7023-402e-897e-834b21d3c62a">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_761ee756-97df-4158-9f3d-d3d5aa141c2d">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8225f2ea-7667-4aa7-8b79-438ba23a19c0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_e649e2ea-fbec-41b9-ab42-ff1b67cc3740">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_afa23232-19d5-4d63-8d96-6e1d975c718e">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5819e8ca-1fe6-49c1-ae11-2b0ed6d836e6">
+          <dmn:text>"Nearly every day"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_048ab899-324d-4214-a259-513901fb5492">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_963d2f4a-fb16-4932-8fae-4203f73dff84">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_58ca9a4b-db5d-4730-83f4-a07c972f7fea">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_6bbee12a-e65d-4214-af51-82b263e25661">
+          <dmn:text>3</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_b3b519e9-e233-4d27-92b4-38532ed9a1e7">
+        <dmn:inputEntry id="_b574952e-660f-4662-b340-9a6d55a102b9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_f45314fc-c688-4a25-b9ba-349afa753ef4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_df8cd064-f392-4eda-83f7-62d9df1676e1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ac446841-3f33-4afe-a49b-6716eb4909b8">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_a30d1deb-d60e-425b-93c5-af4e7bd991f3">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_fac2f1b1-2282-4440-8010-6259320d5071">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9c2c0b7a-c13c-4b3d-9d29-a47c23126a53">
+          <dmn:text>"Not at all"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_fd85729a-5e65-455f-a3de-77da2da0dd65">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_43cba1d3-ce8d-4fe7-9c79-5594b08c44fd">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_c2c6dc99-c999-4c64-9cb2-4a7fad6b057f">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_05fa9253-4ed4-4666-8d85-5c2d4f4b3e4b">
+        <dmn:inputEntry id="_b992817c-4917-483d-9aa6-46114ea63760">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_10d37c86-be47-4849-8c5b-f0ad273cdd21">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_680d2bce-0f63-46b5-869a-50fa5364c070">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_088f3331-d5d3-4dd7-bbff-94512b3f9004">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0e459481-af14-4401-98a9-e35460fafff5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_df508027-299c-4d92-b56e-bad17f6273ef">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_79ab6b73-452a-4019-9b17-2b29b32dc647">
+          <dmn:text>"Several Days"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4b5d9ec9-2fad-4dca-a0d2-1830aab5b94f">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9b833e7e-ed41-4bbd-9153-99aacab51679">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_b0cf7974-125a-4a26-b96b-7f5caf5db140">
+          <dmn:text>1</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_7a845745-211c-4170-83b8-95a3c58d2e8b">
+        <dmn:inputEntry id="_31416767-1a47-4e68-94c0-7cddafb0a7a5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0de077db-27e1-4c0d-8dd6-51474e76bdd6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_12f9fdad-d347-4875-bd92-cd1a5ac30f20">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9c5925f9-a48b-474c-ab31-53f7b3ab8117">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6f00da24-8446-4a5a-abf6-26f65b7eac21">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5c80777e-4c0b-4f8b-8d04-85223376a4db">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6190bb47-ef8b-49e8-b70e-01d9dcbf083e">
+          <dmn:text>"More than half the days"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_244f4c97-07c9-4a66-9692-90fd6da5fef5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7a623931-a638-4ccd-8b5e-d20f1a50a745">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_845732b5-1e83-4909-8ad3-f323d886851c">
+          <dmn:text>2</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_3d9af84b-1a2a-492d-aab6-8b78879e68c1">
+        <dmn:inputEntry id="_b609cd56-8293-4388-bde3-7a1c6258c4b0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_c6f9e8a8-b5c5-4e40-8a89-97b24a999c33">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_05b9bb51-7555-4e0f-abeb-a02c9288ac73">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0c8af5cd-a375-489d-be39-13db321cce35">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_196ddd97-72ac-450d-8734-d4c025bf0fe4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_77fbea78-5333-4f35-9f49-48db325aab3b">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_abcdb6a1-4e02-4d53-af56-c8943e6b6301">
+          <dmn:text>"Nearly every day"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3882fccc-6c2c-436c-8151-1587cba2178f">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_56313dc2-6938-4271-b349-c79b191b7e47">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_77029c65-88f1-436d-a5ee-d5107fc05b76">
+          <dmn:text>3</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_ac7a906b-8431-4d5c-8736-c34d42d7f29e">
+        <dmn:inputEntry id="_0e1a9e0f-8bb5-48d0-92f3-cc8579d203d0">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_d4e2bcc8-baf6-4ed9-b7e8-340243ff1b61">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_f2505eaf-c7bd-4094-a535-374fc33c5f0e">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2080c7ca-a4f8-46ee-aad7-8c1101ce6a51">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_d5aa2819-9da8-4453-ac00-84f150c0e721">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_fe019c73-3163-4d2a-ad21-8a3ffdf6cf93">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_87fd852e-e2ff-46c6-9479-c3c000edbd1f">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ce2f6e64-599d-4e95-b947-c8b6342bb969">
+          <dmn:text>"Not at all"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_f2ab43a7-f52e-4afe-904e-cddd9e45b61a">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_eba8651c-d5a9-4ec5-b366-0eb64b0247c7">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_76475ef3-875c-44f6-83ef-63db4fe936dd">
+        <dmn:inputEntry id="_bb88e6a3-73ec-4ebf-9a39-f92ad105c406">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9ce37e7c-e0cd-4078-a5be-ca9cdcdaa765">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_d46fd002-6c3b-40b2-83d9-fc822c926233">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9cb0e8fe-3d3c-4692-9ca3-d3bfd8ee5fef">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_59e538ca-0eb5-4131-9042-99dbf6c1485c">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_777050eb-a78a-46a8-aac5-af8ac23a7d00">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_37933ed5-a232-44b5-b904-525e979f738e">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_c167c3f8-a072-4049-b2b1-01f93e71d21d">
+          <dmn:text>"Several Days"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_95c37f2b-cf1e-49dc-9cd7-657d2f3c6ddf">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_eb9df6de-8c00-41ac-b690-78a77b97fdbb">
+          <dmn:text>1</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_51a3765b-78dd-4779-bd24-da3392d9b078">
+        <dmn:inputEntry id="_02a3792c-3e1d-47a5-9f2c-f7829dd126b6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ca513f16-029d-46a3-84ac-8b557290451c">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_c4bffacd-4b15-49b4-8e0f-e837cbfbab74">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_b0bfdbf8-03b8-4bbd-b4ca-31fa3e9980d5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_e9ef040c-70fe-4e1c-b0ab-21e281c522be">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_b49e79b6-1e15-43fd-a2e2-b2536f3abfce">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_c16970ca-9dff-4b5a-a19c-ad1e52c6074c">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7d5647e8-7b97-4d76-b6ce-2f35124ac3f7">
+          <dmn:text>"More than half the days"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_f0c68688-ca3d-4993-99ed-1bb3c1b06ba6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_927c332a-7d3f-47ae-a5a1-9a0ecbf384fe">
+          <dmn:text>2</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_17745fac-15be-4ce6-ab93-d6472c79b1de">
+        <dmn:inputEntry id="_6cfb12a9-f6cb-454d-81d0-b7b7fed0d399">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_54e04e04-6105-4a68-a248-0245966accf9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_dc2cfc5e-5314-4bc5-aa21-cb7d09ed84ef">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ab17a0c2-8b5a-4b52-a0b1-044d8d119bdb">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_99702c1b-1ffe-4582-971e-a19d950189b1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_16051d5c-09b7-45d6-8356-02c2cb96913e">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_d12ccb5f-342f-4811-b0bb-ae68ee0237f6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5e0d3e62-e384-4b34-8293-7e78fca0d6cd">
+          <dmn:text>"Nearly every day"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_68de8e10-9efd-4945-9450-e9b0cdbd5838">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_7b4a9d99-2713-4832-826c-86b3e2a21462">
+          <dmn:text>3</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_5b7738f7-2ce1-40ef-b97d-c9b4fc755b75">
+        <dmn:inputEntry id="_121318c0-f2fd-4bea-b503-3422f4602895">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2371fb54-9274-4097-81a8-f125f0c181c1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_d1c36cae-6f58-4970-912f-2d4d5c4a35f9">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_dd4bbc85-beb4-4a5d-9061-2613c2f63740">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_420fb036-0f3d-4ba2-94ac-3dac7d19afc2">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6a221886-c3b0-4cc0-a179-35d747f65b21">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_a99164b5-9eb1-4867-85c1-7bf199f8285c">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_32c07b62-11e2-452b-b998-0a2e089ad9d4">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_f4e9347e-defe-44ed-9c13-4a9ff0ac3204">
+          <dmn:text>"Not at all"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_055334ce-11b7-4a4e-b434-d4420bb2e5b3">
+          <dmn:text>0</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_f17e7e37-5d05-449c-8022-e82b4975b3b4">
+        <dmn:inputEntry id="_c1c99b48-8d60-4c49-b649-5c70a6cde6da">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ccd84256-bc86-45ff-92e3-e92b842c9921">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3dd5b4e3-06b7-4260-8743-5829b90f1306">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_f2bd582f-5c9a-419a-8cd7-56179b12898b">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_44f2fb74-584a-4278-befd-19390d5dea12">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_a73695d5-9fb2-4aec-a317-754996f07a37">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_798ee476-9e91-4290-bb8d-6eec383b9851">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_666f1a66-7b43-48d7-85c2-406d80bc40da">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7717c3f5-eae2-4974-8a0d-9665906137ba">
+          <dmn:text>"Several Days"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_edcfd853-f560-4825-a568-0ef7b2bcd434">
+          <dmn:text>1</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_9132ae80-5b98-4953-9403-d55732cc4478">
+        <dmn:inputEntry id="_ba759a59-91a0-4dd2-8773-9a9497cc8d8c">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6f4f201e-1ec3-41e6-91d4-8fb212c87f88">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_be64cc5f-df46-4f5b-95c5-b21d03c7acd7">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_6656fe2a-b506-42f1-af9b-a5ad7f648f8a">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_fc0a95bc-db1e-478b-bc8a-c3cfefb53ea1">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9f3e094a-f963-4537-a19f-790c43580b0e">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_01a59fa5-f8ca-4eb3-942f-48a730142a99">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_fcdf73c2-2b5d-4612-9d99-d50c16e667ad">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_996c1314-0ea4-4988-b9e7-ef8bafdc2357">
+          <dmn:text>"More than half the days"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_b2d06c95-510c-4072-8e90-3792b912e5ac">
+          <dmn:text>2</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_0e971b2f-990f-4799-a98f-bd2ed158eb9d">
+        <dmn:inputEntry id="_f9fd1a91-ea5d-4532-bac2-ee96200e9f38">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_44b5afb8-daa3-42d8-9a45-e7ca5833af98">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_00bbe59b-7d13-4296-97da-a6bdb1ab4d3c">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_e8f0ff67-61c2-4a14-9132-d6855174fb6a">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_a68738ca-b10c-4e33-80e7-7b92d76591e6">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_e2baac67-561e-4808-82c0-3fda9b5fce00">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_a18ff835-1b2c-4620-8e72-97b606a0597c">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_f62ed092-2e2a-4127-9392-b3f686381dcb">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_57c7e499-2f2d-4d20-b5a3-152100c1f434">
+          <dmn:text>"Nearly every day"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_3a92b33e-57b0-4cb4-8ad1-88b94253cd29">
+          <dmn:text>3</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:inputData id="_41ed454c-3ff2-4b2e-80a6-c2ec21d7e231" name="PHQ-9 Questions">
+    <dmn:description>&lt;p&gt;The 9 questions used in the PHQ-9 questionnaire:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Over the last 2 weeks how often have you been bothered by little interest or pleasure in doing things?&lt;/li&gt;
+&lt;li&gt;Over the last 2 weeks how often have you been bothered by feeling down depressed or hopeless?&lt;/li&gt;
+&lt;li&gt;Over the last 2 weeks how often have you been bothered by trouble falling or staying asleep or sleeping too much?&lt;/li&gt;
+&lt;li&gt;Over the last 2 weeks how often have you been bothered by feeling tired or having little energy?&lt;/li&gt;
+&lt;li&gt;Over the last 2 weeks how often have you been bothered by poor appetite or overeating?&lt;/li&gt;
+&lt;li&gt;Over the last 2 weeks how often have you been bothered by feeling bad about yourself or that you are a failure or have let yourself or your family down?&lt;/li&gt;
+&lt;li&gt;Over the last 2 weeks how often have you been bothered by trouble concentrating on things such as reading the newspaper or watching television?&lt;/li&gt;
+&lt;li&gt;Over the last 2 weeks how often have you been bothered by moving or speaking so slowly that other people could have noticed or the opposite being so fidgety or restless that you have been moving around a lot more than usual?&lt;/li&gt;
+&lt;li&gt;Over the last 2 weeks how often have you been bothered by thoughts that you would be better off dead or of hurting yourself?&lt;/li&gt;
+&lt;/ol&gt;</dmn:description>
+    <dmn:extensionElements/>
+    <dmn:variable id="_4c227f7b-1dd3-4b4f-89fb-502ec7a64cdf" name="PHQ-9 Questions" typeRef="PHQ-9_questions"/>
+  </dmn:inputData>
+  <dmn:decision id="_158af073-7894-4a2f-9723-3fb61c76bef5" name="Severity of Depression">
+    <dmn:description>&lt;p&gt;Depression severity categorization logic based on the PHQ-9 score obtained.&lt;/p&gt;</dmn:description>
+    <dmn:extensionElements/>
+    <dmn:question>&lt;p&gt;What is the severity of depression of the patient?&lt;/p&gt;</dmn:question>
+    <dmn:allowedAnswers>"No depression", "Minimal depression", "Mild depression", "Moderate depression", "Moderately severe depression", "Severe depression"</dmn:allowedAnswers>
+    <dmn:variable id="_04701c8e-086c-4daa-9863-751e4dee40a6" name="Severity of Depression" typeRef="Depression_severity"/>
+    <dmn:informationRequirement id="_1aae33ae-83f8-4278-8091-1caf2edecd2e">
+      <dmn:requiredDecision href="#_198ab7f2-4412-4927-95b6-b84975e40646"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_9d7ab3d3-1506-4019-8222-dd762d59c359" typeRef="Depression_severity" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row" outputLabel="Severity of Depression">
+      <dmn:input id="_dc9258d6-f947-4b29-9f42-77fdc071cfea">
+        <dmn:inputExpression id="_FBA21C7F-461A-45A9-A6C6-378127B7E328" typeRef="tPHQ9Score">
+          <dmn:text>PHQ-9 Score Eval</dmn:text>
+        </dmn:inputExpression>
+        <dmn:inputValues id="_C658EFCA-63A7-41C5-81CD-F20FEB9D7841">
+          <dmn:text>[0..27]</dmn:text>
+        </dmn:inputValues>
+      </dmn:input>
+      <dmn:output id="_0f003fde-c2e7-4c1e-ab89-12c71b50e64f">
+        <dmn:outputValues id="_15A11312-A9E7-4B0A-86F7-E104EE9502EA">
+          <dmn:text>"No depression","Minimal depression","Mild depression","Moderate depression","Moderately severe depression","Severe depression"</dmn:text>
+        </dmn:outputValues>
+      </dmn:output>
+      <dmn:annotation name="Description"/>
+      <dmn:rule id="_f2c90ae8-8cd6-491d-a10f-e79f58095e85">
+        <dmn:inputEntry id="_6ce10030-e3e2-496f-8bae-761119847fc3">
+          <dmn:text>&lt;1</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_6cfd0caa-df31-4691-a182-10cde9717eff">
+          <dmn:text>"No depression"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_421d2479-4abe-41ae-be95-b7ae7cb8f194">
+        <dmn:inputEntry id="_5f16d107-29f5-4ffe-b21d-e414b9ba6a4b">
+          <dmn:text>[1..5)</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_784514a1-660f-476d-85ce-eb6ae8f7f639">
+          <dmn:text>"Minimal depression"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_2ddc8237-0abd-44bf-8c22-399f8a7991ed">
+        <dmn:inputEntry id="_52513455-82f2-4865-9e45-2eb0e6c49953">
+          <dmn:text>[5..10)</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_26fa4492-979c-4373-acba-05fc2c31f4bb">
+          <dmn:text>"Mild depression"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_750787f8-9c9d-4590-91a3-9aa89b92f54a">
+        <dmn:inputEntry id="_4fa5d38d-b932-4404-a6bf-5c54a9470d99">
+          <dmn:text>[10..15)</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_d5ac408e-0214-4942-a510-bf8509a7fa24">
+          <dmn:text>"Moderate depression"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_d11e1d9e-b9f4-4f50-8084-4b52dfd68e74">
+        <dmn:inputEntry id="_a72b8ae5-3741-4de9-9905-1acd6fa10e76">
+          <dmn:text>[15..20)</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_9c390c7c-95ae-4a52-a29d-32a93628148b">
+          <dmn:text>"Moderately severe depression"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_11c6dc97-3905-40c1-8a59-104f7fa62934">
+        <dmn:inputEntry id="_f299a969-365f-479f-9b5d-374da2952976">
+          <dmn:text>[20..27]</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_e765dac4-1382-466a-a2a9-e16f67e3a686">
+          <dmn:text>"Severe depression"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:association id="_1db25a46-7397-4d06-9f86-331cc6c01ee5" associationDirection="None">
+    <dmn:sourceRef href="#_051d4486-c23c-480c-a123-a29438a28132"/>
+    <dmn:targetRef href="#_198ab7f2-4412-4927-95b6-b84975e40646"/>
+  </dmn:association>
+  <dmn:association id="_4d7a3e0a-1d4c-4317-a60f-62623873bdde" associationDirection="None">
+    <dmn:sourceRef href="#_3b5f6a59-ae00-470e-9c96-bd0bd5af5da1"/>
+    <dmn:targetRef href="#_158af073-7894-4a2f-9723-3fb61c76bef5"/>
+  </dmn:association>
+  <dmn:textAnnotation id="_051d4486-c23c-480c-a123-a29438a28132">
+    <dmn:text>Q: What is the PHQ9 score of the patient?
+A: A number greater or equal to 0 and smaller or equal to 27</dmn:text>
+  </dmn:textAnnotation>
+  <dmn:textAnnotation id="_3b5f6a59-ae00-470e-9c96-bd0bd5af5da1">
+    <dmn:text>Q: What is the severity of depression of the patient?
+A: "No depression", "Minimal depression", "Mild depression", "Moderate depression", "Moderately severe depression", "Severe depression"</dmn:text>
+  </dmn:textAnnotation>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_ba2322bc-fda4-4f0e-beb1-b95ed9489d87" name="DRG">
+      <di:extension>
+        <kie:ComponentsWidthsExtension xmlns:kie="http://www.drools.org/kie/dmn/1.2">
+          <kie:ComponentWidths dmnElementRef="_65d46070-66e4-45b3-bbf3-b9eaccaa0ab3"/>
+          <kie:ComponentWidths dmnElementRef="_9d7ab3d3-1506-4019-8222-dd762d59c359"/>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-drg-_198ab7f2-4412-4927-95b6-b84975e40646" dmnElementRef="_198ab7f2-4412-4927-95b6-b84975e40646" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="50" y="280" width="153" height="60"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_41ed454c-3ff2-4b2e-80a6-c2ec21d7e231" dmnElementRef="_41ed454c-3ff2-4b2e-80a6-c2ec21d7e231" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="153"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="58.75882911682129" y="417.99999618530273" width="135.48234176635742" height="60.00000762939453"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_158af073-7894-4a2f-9723-3fb61c76bef5" dmnElementRef="_158af073-7894-4a2f-9723-3fb61c76bef5" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="50" y="150" width="153" height="60"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_051d4486-c23c-480c-a123-a29438a28132" dmnElementRef="_051d4486-c23c-480c-a123-a29438a28132" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="305.6250000124799" y="265" width="405.9999999750402" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-drg-_3b5f6a59-ae00-470e-9c96-bd0bd5af5da1" dmnElementRef="_3b5f6a59-ae00-470e-9c96-bd0bd5af5da1" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="305.6250000124799" y="139" width="441.9999999750402" height="71"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-drg-_1db25a46-7397-4d06-9f86-331cc6c01ee5" dmnElementRef="_1db25a46-7397-4d06-9f86-331cc6c01ee5">
+        <di:waypoint x="508.625" y="290"/>
+        <di:waypoint x="126.5" y="310"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_49f5775e-e238-461b-b46a-e09a5dd5158d" dmnElementRef="_49f5775e-e238-461b-b46a-e09a5dd5158d">
+        <di:waypoint x="126.5" y="417.99999618530273"/>
+        <di:waypoint x="126.5" y="340"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_1aae33ae-83f8-4278-8091-1caf2edecd2e" dmnElementRef="_1aae33ae-83f8-4278-8091-1caf2edecd2e">
+        <di:waypoint x="126.5" y="280"/>
+        <di:waypoint x="126.5" y="210"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_4d7a3e0a-1d4c-4317-a60f-62623873bdde" dmnElementRef="_4d7a3e0a-1d4c-4317-a60f-62623873bdde">
+        <di:waypoint x="526.625" y="174.5"/>
+        <di:waypoint x="126.5" y="180"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
